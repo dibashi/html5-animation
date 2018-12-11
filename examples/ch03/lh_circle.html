@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>lh_Bobbing1</title>
+    <link rel="stylesheet" href="../include/style.css">
+</head>
+
+<body>
+    <header>
+        Example from <a href="http://amzn.com/1430236655?tag=html5anim-20"><em>dont know hohoho~</em></a>
+    </header>
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <aside>Move mouse on canvas element.</aside>
+
+    <script src="../include/utils.js"></script>
+    <script src="./classes/lh_ball.js"></script>
+    <!-- <script src="./classes/ball.js"></script> -->
+    <script>
+        window.onload = function () {
+            var canvas = document.getElementById('canvas'),
+                context = canvas.getContext('2d'),
+                mouse = utils.captureMouse(canvas),
+                ball = new Ball();
+
+            ball.x = canvas.width / 2;
+            ball.y = canvas.height / 2;
+            var angle = 0.0;
+            var centerY = 200;
+            var centerX = 200;
+            var range = 80;
+            var rangeY = 40;
+            var speed = 0.05;
+            (function drawFrame() {
+                window.requestAnimationFrame(drawFrame, canvas);
+                context.clearRect(0, 0, canvas.width, canvas.height);
+
+               
+                ball.x = centerX + range*Math.cos(angle);
+                ball.y = centerY + rangeY * Math.sin(angle);
+                angle += speed;
+                ball.draw(context);
+            }());
+        };
+    </script>
+</body>
+
+</html>

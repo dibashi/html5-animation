@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>lh_Wave 1</title>
+    <link rel="stylesheet" href="../include/style.css">
+</head>
+
+<body>
+    <header>
+        Example from <a href="http://amzn.com/1430236655?tag=html5anim-20"><em>Foundation HTML5 Animation with
+                JavaScript</em></a>
+    </header>
+    <canvas id="canvas" width="400" height="400"></canvas>
+
+    <script src="../include/utils.js"></script>
+    <script src="./classes/ball.js"></script>
+    <script>
+        window.onload = function () {
+            var canvas = document.getElementById('canvas'),
+                context = canvas.getContext('2d'),
+
+                angle = 0.0,
+                centerY = 200,
+                range = 50,
+                xSpeed = 1,
+                ySpeed = 0.05;
+
+            var preX = 0.0;
+            var preY = centerY;
+            
+            context.lineWidth =2;
+            context.moveTo(preX,preY);
+            (function drawFrame() {
+                window.requestAnimationFrame(drawFrame, canvas);
+                //context.clearRect(0, 0, canvas.width, canvas.height);
+
+                context.beginPath();
+                context.moveTo(preX,preY);
+                preX = preX + 1.0;
+                angle+=ySpeed;
+                preY = centerY + range*Math.cos(angle);
+                context.lineTo(preX,preY);
+                context.stroke();
+            }());
+        };
+    </script>
+</body>
+
+</html>
