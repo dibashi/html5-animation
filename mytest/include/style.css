@@ -1,0 +1,10 @@
+body {
+    background-color: #bbb;
+}
+
+#canvas {
+    border: 10px solid #f00;
+    background-color: rgba(83, 236, 177, 0.295);
+    /* width: 600px;
+    height: 300px; */
+}
